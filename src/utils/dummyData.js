@@ -1,7 +1,4 @@
-import React from "react";
-import ReactDOM from "react-dom/client";
-
-const restaurants = [
+ export const restaurants = [
   {
     id: 1,
     name: "Bubu ki Rasoi",
@@ -83,60 +80,3 @@ const restaurants = [
     image: "https://images.unsplash.com/photo-1600891964599-f61ba0e24092?auto=format&fit=crop&w=660&q=80"
   }
 ];
-const Header=()=>{
-    return (
-        <div className="navbar">
-            <img alt="logo" src="https://cdn-icons-png.flaticon.com/512/5787/5787016.png" className="logo"/>
-            <div className="navbar-links">
-                <ul>
-                <li>Home</li>
-                <li>About</li>
-                <li>Cart</li>
-                <li>Login/Sign-up</li>
-                </ul>
-            </div>
-        </div>
-        
-    )
-}
-const BodyLayout=()=>{
-    return (
-<div>
-    <div className="search">Search</div>
-    <div className="cards">
-        {restaurants?.map(restaurant=>
-       <CardComponent key={restaurant?.id} 
-       restData={restaurant}/>
-        )
-}
-    </div>
-</div>
-    )
-}
-const CardComponent=({restData})=>{
-    const {name,cuisine,rating,address,image}=restData
-    return (
-        <div className="card-container">
-            <div className="card">
-       <img className="card-image" src={image}/>
-       <h3>{name}</h3>
-       <p>{cuisine?.join(", ")}</p>
-       <p>{rating}</p>
-       <p>{address}</p>
-        </div>
-        </div> 
-    )
-}
-
-
-const AppLayout=()=>{
-    return (
-        <div className="container">
-            <Header/>
-            <BodyLayout/>
-
-        </div>
-    )
-}
-const root=ReactDOM.createRoot(document.getElementById("root"));
-root.render(<AppLayout/>)
