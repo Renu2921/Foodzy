@@ -1,0 +1,22 @@
+{
+  "name": "foodzy",
+  "version": "1.0.0",
+  "description": "Foodzy is a food ordering website",
+  "scripts": {
+    "test": "jest",
+    "dev":"parcel index.html",
+    "build":"parcel build index.html"
+  },
+  "author": "Renu",
+  "license": "ISC",
+  "devDependencies": {
+    "parcel": "^2.16.0"
+  },
+  "dependencies": {
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0"
+  },
+  "browersList":[
+    "last 2 versions"
+  ]
+}
