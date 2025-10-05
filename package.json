@@ -4,8 +4,8 @@
   "description": "Foodzy is a food ordering website",
   "scripts": {
     "test": "jest",
-    "dev":"parcel index.html",
-    "build":"parcel build index.html"
+    "dev": "parcel index.html",
+    "build": "parcel build index.html"
   },
   "author": "Renu",
   "license": "ISC",
@@ -14,9 +14,10 @@
   },
   "dependencies": {
     "react": "^19.2.0",
-    "react-dom": "^19.2.0"
+    "react-dom": "^19.2.0",
+    "react-router-dom": "^7.9.3"
   },
-  "browersList":[
+  "browersList": [
     "last 2 versions"
   ]
 }

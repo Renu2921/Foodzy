@@ -2,17 +2,49 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import Header from "./components/Header";
 import BodyLayout from "./components/BodyLayout";
-
+import Cart from "./components/Cart";
+import About from "./components/About";
+import RestroMenu from "./components/RestroMenu";
+import { createBrowserRouter,Outlet,RouterProvider } from "react-router";
+import ErrorPage from "./components/ErrorPage";
 
 
 const AppLayout=()=>{
     return (
         <div className="container">
             <Header/>
-            <BodyLayout/>
+            <Outlet  />
 
         </div>
     )
 }
+
+const appRouter=createBrowserRouter([
+    {
+        path:"/",
+        element:<AppLayout/>,
+        children:[
+    {
+        path:"/",
+        element:<BodyLayout/>
+    },
+    {
+        path:"/about",
+        element:<About/>
+    },
+    {
+        path:"/cart",
+        element:<Cart/>
+    },
+    {
+        path:"/restaurant/:resId",
+        element:<RestroMenu/>
+    }   
+        ],
+        errorElement:<ErrorPage/>
+    } 
+    
+]);
+
 const root=ReactDOM.createRoot(document.getElementById("root"));
-root.render(<AppLayout/>)
+root.render(<RouterProvider router={appRouter}/>)

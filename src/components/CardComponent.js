@@ -1,13 +1,17 @@
+import { IMAGR_URL } from "../utils/constants";
+import { useNavigate } from "react-router";
 const CardComponent=({restData})=>{
-    const {name,cuisine,rating,address,image}=restData
+    const navigate=useNavigate();
+    const {id,name,cuisines,avgRating,cloudinaryImageId}=restData?.info
     return (
-        <div className="card-container">
+        <div className="card-container" onClick={()=>{
+           navigate(`/restaurant/${id}`)
+        }}>
             <div className="card">
-       <img className="card-image" src={image}/>
+       <img className="card-image" src={`${IMAGR_URL}${cloudinaryImageId}`}/>
        <h3>{name}</h3>
-       <p>{cuisine?.join(", ")}</p>
-       <p>{rating}</p>
-       <p>{address}</p>
+       <p>{cuisines?.join(", ")}</p>
+       <p>{avgRating}</p>
         </div>
         </div> 
     )
