@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 const Header=()=>{
 const [toggle, setToggle]=useState("Login");
 useEffect(()=>{
-    console.log(" header useEffect callback is called")
+    // console.log(" header useEffect callback is called")
 // },)
 // },[])
 },[toggle])

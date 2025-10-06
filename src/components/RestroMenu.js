@@ -15,10 +15,10 @@ const RestroMenu=()=>{
         setMenuData(jsonData);
     }
     if (!menuData?.data?.cards?.length) return <ShimmerCard />;
-    
+
     const {name,avgRating,cuisines,locality}=menuData?.data?.cards?.[2]?.card?.card?.info ??{};
-    const {itemCards}=menuData?.data?.cards?.[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards
-?.[2]?.card?.card ??  {}
+    const {itemCards}=menuData?.data?.cards?.[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards?.[2]?.card?.card ??  {}
+console.log(itemCards)
     return (
         <div className="menu">
             <h1>{name}</h1>
