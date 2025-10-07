@@ -1,27 +1,23 @@
 import CardComponent from "./CardComponent";
 import { useState, useEffect } from "react";
 import ShimmerCard from "./ShimmerCard";
+import useOnlineStatus from "../utils/hooks/useOnlineStatus";
+import useRestroData from "../utils/hooks/useRestroData";
 
 const BodyLayout = () => {
-  const [restroData, setRestroData] = useState([]);
-  const [filteredRestroData, setFilteredRestroData] = useState([]);
   const [searchValue, setSearchValue]=useState("");
+  const onlineStatus=useOnlineStatus();
 // console.log("body rendered")  //whenever state variable change,react trigger a reconsiliation cycle(re-renders the component)
-  useEffect(() => {
-    ApiData();
-  }, []);
-  const ApiData = async () => {
-    const response = await fetch(
-      "https://www.swiggy.com/dapi/restaurants/list/v5?lat=28.6085642&lng=77.3561307&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING"
-    );
-    const jsonData = await response.json();
-     setRestroData(jsonData?.data?.cards?.[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
-    setFilteredRestroData(jsonData?.data?.cards?.[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
-  };
+  const {restroData,setRestroData,filteredRestroData,setFilteredRestroData}=useRestroData();
+  if(!onlineStatus) return <h1>You are Offline,Please check internet connection!!</h1>
 
-  return restroData?.length === 0 ? (
-    <ShimmerCard />
-  ) : (
+   if (restroData.length === 0 && filteredRestroData.length === 0)
+    return <ShimmerCard />;
+
+  if (restroData.length === 0 && filteredRestroData.length > 0)
+    return <h2>No restaurants found for "{searchValue}"</h2>;
+
+  return  (
     <div className="search-container">
     <div>
         <input 

@@ -2,18 +2,11 @@ import { useEffect, useState } from "react";
 import ShimmerCard from "./ShimmerCard";
 import { IMAGR_URL } from "../utils/constants";
 import { useParams } from "react-router";
+import useRestroMenu from "../utils/hooks/useRestroMenu";
 
 const RestroMenu=()=>{
     const {resId}=useParams();
-    const [menuData, setMenuData]=useState([]);
-    useEffect(()=>{
-        fetchMenuData();
-    },[]);
-    const fetchMenuData=async ()=>{
-        const response= await fetch(`https://www.swiggy.com/dapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=28.6085642&lng=77.3561307&restaurantId=${resId}&catalog_qa=undefined&submitAction=ENTER`);
-        const jsonData=await response.json();
-        setMenuData(jsonData);
-    }
+    const menuData=useRestroMenu(resId);
     if (!menuData?.data?.cards?.length) return <ShimmerCard />;
 
     const {name,avgRating,cuisines,locality}=menuData?.data?.cards?.[2]?.card?.card?.info ??{};
