@@ -1,4 +1,4 @@
-import { Link } from "react-router";
+import { Link } from "react-router-dom";
 import {LOGO_URL} from "../utils/constants";
 import { useContext, useEffect, useState } from "react";
 import useOnlineStatus from "../utils/hooks/useOnlineStatus";
@@ -26,6 +26,7 @@ useEffect(()=>{
                 <li><Link to="/about">About us</Link></li>
                 <li><Link to="/cart">Cart({cart.length} items)</Link></li>
                 <li><Link to="/grocery">Grocery</Link></li>
+                <li><Link to="/contact">Contact</Link></li>
                 <button onClick={()=>{
                     setToggle(toggle=="Login"?"Logout":"Login")
                 }}

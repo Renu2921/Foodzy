@@ -14,7 +14,8 @@ import Store from "./utils/store/Store"
 
 // using lazy loading
 const Grocery=lazy(()=>import("./components/Grocery"));
-const About=lazy(()=>import("./components/About"))
+const About=lazy(()=>import("./components/About"));
+const Contact=lazy(()=>import("./components/Contact"))
 
 const AppLayout=()=>{
 
@@ -56,6 +57,12 @@ const appRouter=createBrowserRouter([
         element:(<Suspense fallback={
             <h1>loading.......</h1>
         }><Grocery/> </Suspense>)
+    },
+     {
+        path:"/contact",
+        element:(<Suspense fallback={
+            <h1>loading.......</h1>
+        }><Contact/> </Suspense>)
     },
     {
         path:"/restaurant/:resId",
